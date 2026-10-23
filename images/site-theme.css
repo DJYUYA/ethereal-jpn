@@ -1,0 +1,152 @@
+/* Shared washi and mountain details for every ETHEREAL page. */
+:root {
+  --washi-texture: url("./washi-relief.svg");
+  --mountain-mask: url("./mountain-range.svg");
+}
+
+body,
+.intro,
+.founder,
+.projects,
+.activity-feature,
+.activity-content,
+.questions,
+.question,
+.join,
+.footer,
+.header,
+.hero,
+.form-card,
+.field input,
+.field select,
+.field textarea,
+.form-note,
+.card {
+  background-image: var(--washi-texture);
+  background-size: 420px 420px;
+  background-repeat: repeat;
+}
+
+.mountain-scene {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  --mountain-color: var(--olive, #737a55);
+  --mountain-opacity: .28;
+  --mountain-width: min(58vw, 620px);
+  --mountain-height: 156px;
+}
+
+.mountain-scene::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--mountain-width);
+  height: var(--mountain-height);
+  background-color: var(--mountain-color);
+  opacity: var(--mountain-opacity);
+  pointer-events: none;
+  -webkit-mask: var(--mountain-mask) right bottom / 100% 100% no-repeat;
+  mask: var(--mountain-mask) right bottom / 100% 100% no-repeat;
+}
+
+.mountain-scene > * {
+  position: relative;
+  z-index: 1;
+}
+
+.mountain-scene--left::after {
+  right: auto;
+  left: 0;
+  transform: scaleX(-1);
+}
+
+.mountain-scene--hero {
+  --mountain-color: #f3f0e7;
+  --mountain-opacity: .55;
+  --mountain-width: min(72vw, 800px);
+  --mountain-height: 226px;
+}
+
+.mountain-scene--intro {
+  --mountain-width: min(68vw, 690px);
+  --mountain-height: 188px;
+  --mountain-opacity: .38;
+}
+
+.mountain-scene--light {
+  --mountain-color: #e8e3d2;
+  --mountain-opacity: .34;
+}
+
+.mountain-scene--dark {
+  --mountain-color: #e9e5d7;
+  --mountain-opacity: .36;
+}
+
+.mountain-scene--compact {
+  --mountain-width: min(48vw, 510px);
+  --mountain-height: 130px;
+  --mountain-opacity: .25;
+}
+
+.intro.mountain-scene {
+  padding-bottom: 150px;
+}
+
+.section.mountain-scene {
+  padding-bottom: 142px;
+}
+
+.mountain-scene.footer::before {
+  content: none;
+}
+
+.about-image {
+  background-image: url("./about-leaves.jpg");
+  background-position: center 48%;
+}
+
+.card.mountain-scene::after {
+  width: min(65vw, 430px);
+  height: 138px;
+  --mountain-color: var(--olive, #737a55);
+  --mountain-opacity: .35;
+}
+
+@media (max-width: 800px) {
+  .mountain-scene {
+    --mountain-width: 78vw;
+    --mountain-height: 128px;
+    --mountain-opacity: .24;
+  }
+
+  .mountain-scene--hero {
+    --mountain-width: 92vw;
+    --mountain-height: 170px;
+    --mountain-opacity: .5;
+  }
+
+  .mountain-scene--intro {
+    --mountain-width: 92vw;
+    --mountain-height: 146px;
+  }
+
+  .intro.mountain-scene,
+  .section.mountain-scene {
+    padding-bottom: 126px;
+  }
+
+  .mountain-scene--compact {
+    --mountain-width: 74vw;
+    --mountain-height: 116px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-image {
+    transition: none;
+  }
+}
