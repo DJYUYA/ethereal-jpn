@@ -1,6 +1,6 @@
 /* Shared washi and mountain details for every ETHEREAL page. */
 :root {
-  --washi-texture: url("./washi-relief.svg?v=20261023-simple");
+  --washi-texture: url("./washi-paper.jpg?v=20261023-washi-reference");
   --mountain-mask: url("./mountain-range.svg");
 }
 
@@ -12,15 +12,17 @@ body,
 .join,
 .footer,
 .header,
+.contact-hero,
+.activity-feature,
 .form-card,
 .field input,
 .field select,
 .field textarea,
-.form-note,
-.card {
+.form-note {
   background-image: var(--washi-texture);
-  background-size: 540px 540px;
+  background-size: 900px 600px;
   background-repeat: repeat;
+  background-blend-mode: soft-light;
 }
 
 .site-loader {
@@ -34,9 +36,10 @@ body,
   z-index: 0;
   inset: 0;
   background-image: var(--washi-texture);
-  background-size: 540px 540px;
-  background-repeat: repeat;
-  opacity: .55;
+  background-size: cover;
+  background-repeat: no-repeat;
+  mix-blend-mode: soft-light;
+  opacity: .72;
   pointer-events: none;
 }
 
@@ -86,6 +89,10 @@ body,
   --mountain-opacity: .55;
   --mountain-width: min(72vw, 800px);
   --mountain-height: 226px;
+}
+
+.mountain-scene--hero::after {
+  display: none;
 }
 
 .mountain-scene--intro {
