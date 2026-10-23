@@ -1,0 +1,178 @@
+/* Shared mountain details for every ETHEREAL page. */
+:root {
+  --mountain-mask: url("./mountain-range.svg");
+}
+
+.site-loader {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.site-loader::before {
+  content: none;
+}
+
+.site-loader > * {
+  position: relative;
+  z-index: 1;
+}
+
+.mountain-scene {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  --mountain-color: var(--olive, #737a55);
+  --mountain-opacity: .28;
+  --mountain-width: min(58vw, 620px);
+  --mountain-height: 156px;
+}
+
+.mountain-scene::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--mountain-width);
+  height: var(--mountain-height);
+  background-color: var(--mountain-color);
+  opacity: var(--mountain-opacity);
+  pointer-events: none;
+  -webkit-mask: var(--mountain-mask) right bottom / 100% 100% no-repeat;
+  mask: var(--mountain-mask) right bottom / 100% 100% no-repeat;
+}
+
+.mountain-scene > * {
+  position: relative;
+  z-index: 1;
+}
+
+.mountain-scene--left::after {
+  right: auto;
+  left: 0;
+  transform: scaleX(-1);
+}
+
+.mountain-scene--intro {
+  --mountain-width: min(68vw, 690px);
+  --mountain-height: 188px;
+  --mountain-opacity: .38;
+}
+
+.mountain-scene--light {
+  --mountain-color: #e8e3d2;
+  --mountain-opacity: .34;
+}
+
+.mountain-scene--dark {
+  --mountain-color: #e9e5d7;
+  --mountain-opacity: .36;
+}
+
+.mountain-scene--compact {
+  --mountain-width: min(48vw, 510px);
+  --mountain-height: 130px;
+  --mountain-opacity: .25;
+}
+
+.intro.mountain-scene {
+  padding-bottom: 150px;
+}
+
+.section.mountain-scene {
+  padding-bottom: 142px;
+}
+
+.mountain-scene.footer::before {
+  content: none;
+}
+
+.about-image {
+  height: auto;
+  aspect-ratio: 4 / 5;
+  max-height: 680px;
+  border: 10px solid var(--cream, #f3f0e7);
+  border-bottom-width: 36px;
+  box-shadow: 0 14px 34px rgba(37, 46, 38, .14);
+  background-image: url("./about-leaves.jpg");
+  background-position: center 42%;
+}
+
+.about-image::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(23, 32, 26, .32), transparent 36%);
+}
+
+.activity-photo {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  background-image: url("./activity-bamboo.jpg");
+  background-position: center 52%;
+}
+
+.activity-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(20, 29, 21, .46), transparent 34%, rgba(20, 29, 21, .08));
+  box-shadow: inset 0 0 0 9px rgba(243, 240, 231, .72);
+}
+
+.card.mountain-scene::after {
+  width: min(65vw, 430px);
+  height: 138px;
+  --mountain-color: var(--olive, #737a55);
+  --mountain-opacity: .35;
+}
+
+@media (max-width: 800px) {
+  .mountain-scene {
+    --mountain-width: 78vw;
+    --mountain-height: 128px;
+    --mountain-opacity: .24;
+  }
+
+  .mountain-scene--intro {
+    --mountain-width: 92vw;
+    --mountain-height: 146px;
+  }
+
+  .intro.mountain-scene,
+  .section.mountain-scene {
+    padding-bottom: 126px;
+  }
+
+  .mountain-scene--compact {
+    --mountain-width: 74vw;
+    --mountain-height: 116px;
+  }
+
+  .about-image {
+    height: auto;
+    aspect-ratio: 4 / 5;
+    max-height: none;
+  }
+
+  .activity-photo {
+    min-height: 0;
+    aspect-ratio: 3 / 2;
+    background-position: center 54%;
+  }
+
+  .activity-photo::before {
+    box-shadow: inset 0 0 0 7px rgba(243, 240, 231, .72);
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-image {
+    transition: none;
+  }
+}
