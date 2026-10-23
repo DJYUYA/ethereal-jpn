@@ -8,14 +8,10 @@ body,
 .intro,
 .founder,
 .projects,
-.activity-feature,
-.activity-content,
 .questions,
-.question,
 .join,
 .footer,
 .header,
-.hero,
 .form-card,
 .field input,
 .field select,
@@ -23,8 +19,30 @@ body,
 .form-note,
 .card {
   background-image: var(--washi-texture);
-  background-size: 420px 420px;
+  background-size: 540px 540px;
   background-repeat: repeat;
+}
+
+.site-loader {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.site-loader::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-image: var(--washi-texture);
+  background-size: 540px 540px;
+  background-repeat: repeat;
+  opacity: .55;
+  pointer-events: none;
+}
+
+.site-loader > * {
+  position: relative;
+  z-index: 1;
 }
 
 .mountain-scene {
