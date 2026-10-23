@@ -1,6 +1,6 @@
 /* Shared washi and mountain details for every ETHEREAL page. */
 :root {
-  --washi-texture: url("./washi-relief.svg");
+  --washi-texture: url("./washi-relief.svg?v=20261023-simple");
   --mountain-mask: url("./mountain-range.svg");
 }
 
