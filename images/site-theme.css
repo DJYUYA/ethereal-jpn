@@ -1,28 +1,6 @@
-/* Shared washi and mountain details for every ETHEREAL page. */
+/* Shared mountain details for every ETHEREAL page. */
 :root {
-  --washi-texture: url("./washi-paper.jpg?v=20261023-washi-reference");
   --mountain-mask: url("./mountain-range.svg");
-}
-
-body,
-.intro,
-.founder,
-.projects,
-.questions,
-.join,
-.footer,
-.header,
-.contact-hero,
-.activity-feature,
-.form-card,
-.field input,
-.field select,
-.field textarea,
-.form-note {
-  background-image: var(--washi-texture);
-  background-size: 900px 600px;
-  background-repeat: repeat;
-  background-blend-mode: soft-light;
 }
 
 .site-loader {
@@ -31,16 +9,7 @@ body,
 }
 
 .site-loader::before {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  background-image: var(--washi-texture);
-  background-size: cover;
-  background-repeat: no-repeat;
-  mix-blend-mode: soft-light;
-  opacity: .72;
-  pointer-events: none;
+  content: none;
 }
 
 .site-loader > * {
@@ -82,17 +51,6 @@ body,
   right: auto;
   left: 0;
   transform: scaleX(-1);
-}
-
-.mountain-scene--hero {
-  --mountain-color: #f3f0e7;
-  --mountain-opacity: .55;
-  --mountain-width: min(72vw, 800px);
-  --mountain-height: 226px;
-}
-
-.mountain-scene--hero::after {
-  display: none;
 }
 
 .mountain-scene--intro {
@@ -178,12 +136,6 @@ body,
     --mountain-width: 78vw;
     --mountain-height: 128px;
     --mountain-opacity: .24;
-  }
-
-  .mountain-scene--hero {
-    --mountain-width: 92vw;
-    --mountain-height: 170px;
-    --mountain-opacity: .5;
   }
 
   .mountain-scene--intro {
