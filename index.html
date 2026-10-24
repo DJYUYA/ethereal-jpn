@@ -40,10 +40,59 @@
   
   </style>
   <link rel="stylesheet" href="./images/site-theme.css?v=20261023-original-colors" />
+  <style>
+    .mobile-menu-toggle{display:none}
+    .mobile-menu-backdrop{display:none}
+    .mobile-nav-heading,.mobile-menu-contact{display:none}
+    @media(max-width:800px){
+      .nav-inner{position:relative;display:flex;align-items:center;justify-content:space-between}
+      .nav.nav-menu-open{z-index:7}
+      .mobile-menu-toggle{position:absolute;right:0;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid #ffffff42;border-radius:50%;background:rgba(243,240,231,.1);color:inherit;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:pointer;z-index:6;transition:background-color .32s ease,border-color .32s ease,color .32s ease,box-shadow .32s ease}
+      .mobile-menu-toggle:hover{background:rgba(243,240,231,.2);box-shadow:0 4px 18px #1113}
+      .mobile-menu-icon{display:flex;width:19px;height:15px;flex-direction:column;justify-content:space-between}
+      .mobile-menu-icon span{display:block;width:19px;height:1.5px;background:currentColor;transform-origin:center;transition:transform .38s cubic-bezier(.2,.8,.2,1),opacity .2s ease,width .28s ease}
+      .mobile-menu-icon span:nth-child(2){width:13px}
+      .nav-menu-open .mobile-menu-icon span:first-child{transform:translateY(6.75px) rotate(45deg)}
+      .nav-menu-open .mobile-menu-icon span:nth-child(2){width:0;opacity:0}
+      .nav-menu-open .mobile-menu-icon span:last-child{transform:translateY(-6.75px) rotate(-45deg)}
+      .nav.nav-menu-open .mobile-menu-toggle{color:var(--forest);background:rgba(115,122,85,.1);border-color:var(--line)}
+      .nav .brand{position:absolute;left:50%;transform:translateX(-50%);justify-self:auto}
+      .nav-right{display:none}
+      body.menu-open{overflow:hidden}
+      .mobile-menu-backdrop{display:block;position:fixed;inset:0;z-index:4;padding:0;border:0;background:rgba(23,28,23,.52);backdrop-filter:blur(3px) saturate(.78);-webkit-backdrop-filter:blur(3px) saturate(.78);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .34s ease,visibility .34s ease;cursor:default}
+      .nav.nav-menu-open + .mobile-menu-backdrop{opacity:1;visibility:visible;pointer-events:auto}
+      .nav-links{position:fixed;top:0;right:0;left:auto;width:min(86vw,370px);height:100vh;height:100dvh;overflow-y:auto;display:flex;flex-direction:column;align-items:stretch;gap:0;padding:104px 30px 32px;background:linear-gradient(155deg,#fbfaf6 0%,#f3f0e7 100%);color:var(--forest);border:0;border-left:1px solid rgba(44,57,47,.12);border-radius:0;box-shadow:-20px 0 60px rgba(17,24,18,.16);z-index:5;transform:translateX(102%);visibility:hidden;opacity:0;pointer-events:none;transition:transform .42s cubic-bezier(.22,.72,.18,1),opacity .3s ease,visibility .42s ease}
+      .nav.nav-menu-open .nav-links{transform:translateX(0);visibility:visible;opacity:1;pointer-events:auto}
+      .mobile-nav-heading{display:flex;flex-direction:column;gap:4px;margin:0 0 22px;padding-bottom:18px;border-bottom:1px solid var(--line);color:var(--olive);font-size:10px;letter-spacing:.2em}
+      .mobile-nav-heading span:last-child{color:var(--forest);font-size:17px;font-weight:600;letter-spacing:.22em}
+      .nav-links a,.nav-links a:not([href="#about"]){display:block;padding:17px 0;border-bottom:1px solid var(--line);color:var(--forest);font-size:12px;letter-spacing:.18em;opacity:0;transform:translateX(10px);transition:opacity .32s ease,transform .4s cubic-bezier(.22,.72,.18,1);transition-delay:0s}
+      .nav.nav-menu-open .nav-links a{opacity:.9;transform:translateX(0);transition-delay:.08s}
+      .nav.nav-menu-open .nav-links a:nth-of-type(2){transition-delay:.12s}
+      .nav.nav-menu-open .nav-links a:nth-of-type(3){transition-delay:.16s}
+      .nav.nav-menu-open .nav-links a:nth-of-type(4){transition-delay:.2s}
+      .nav-links a:hover{opacity:1}
+      .nav-links a:after{display:none}
+      .mobile-menu-contact{display:flex;align-items:center;justify-content:space-between;margin-top:28px;padding:14px 16px;border:1px solid rgba(44,57,47,.42);color:var(--forest);font-size:11px;letter-spacing:.14em;opacity:0;transform:translateY(5px);transition:opacity .3s ease,transform .35s ease;transition-delay:0s}
+      .nav-links a.mobile-menu-contact{display:flex}
+      .nav.nav-menu-open .mobile-menu-contact{opacity:1;transform:translateY(0);transition-delay:.24s}
+      .mobile-menu-contact span{font-size:15px}
+      .mobile-menu-toggle:focus-visible{outline:2px solid var(--cream);outline-offset:-3px}
+    }
+    @media(max-width:520px){
+      .hero{height:88vh;height:88svh;min-height:620px;max-height:860px;background-position:58% center}
+      .hero-content{padding-top:0;transform:translateY(-22px)}
+      .hero h1{font-size:clamp(37px,10vw,42px);line-height:1.42;letter-spacing:0;margin-bottom:16px}
+      .hero p{max-width:32ch;font-size:12px;line-height:2;margin-bottom:24px}
+      .scroll{left:auto;right:20px;bottom:20px;gap:9px;font-size:8px;opacity:.9}
+      .scroll:after{height:34px}
+    }
+    @media(max-height:700px) and (max-width:800px){.hero{min-height:600px}.hero-content{padding-top:24px}}
+  </style>
 </head>
 <body>
   <div class="site-loader" id="site-loader" aria-hidden="true"><div class="loader-inner"><div class="loader-symbol"><span class="loader-ring"></span><svg class="loader-mountain" viewBox="0 0 64 64"><path d="M8 50 23.5 29.5 31.8 40.5 41.5 21.5 56 50H8Z"/></svg></div><div class="loader-wordmark">ETHEREAL</div><div class="loader-progress" aria-hidden="true"><div class="loader-progress-meta"><span class="loader-progress-label">LOADING</span><span class="loader-progress-value"><span class="loader-percent" id="loader-percent">00</span><span class="loader-progress-unit">%</span></span></div><span class="loader-track"><span class="loader-track-fill" id="loader-track-fill"></span></span></div></div></div>
-  <header class="nav"><div class="wrap nav-inner"><nav class="nav-links" aria-label="メインナビゲーション"><a href="#about">ABOUT</a><a href="#questions">QUESTIONS</a><a href="#projects">ACTIVITIES</a><a href="#founder">FOUNDER</a></nav><a class="brand" href="#top" aria-label="ETHEREAL ホーム"><svg class="brand-symbol" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 50 23.5 29.5 31.8 40.5 41.5 21.5 56 50H8Z"/></svg><span>ETHEREAL</span></a><div class="nav-right"><a class="contact-link" href="./contact.html" target="_blank" rel="noopener noreferrer">CONTACT <span>↗</span></a></div></div></header>
+  <header class="nav"><div class="wrap nav-inner"><button class="mobile-menu-toggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="primary-navigation"><span class="mobile-menu-icon" aria-hidden="true"><span></span><span></span><span></span></span></button><nav class="nav-links" id="primary-navigation" aria-label="メインナビゲーション"><div class="mobile-nav-heading" aria-hidden="true"><span>MENU</span><span>ETHEREAL</span></div><a href="#about">ABOUT</a><a href="#questions">QUESTIONS</a><a href="#projects">ACTIVITIES</a><a href="#founder">FOUNDER</a><a class="mobile-menu-contact" href="./contact.html" target="_blank" rel="noopener noreferrer">CONTACT <span>↗</span></a></nav><a class="brand" href="#top" aria-label="ETHEREAL ホーム"><svg class="brand-symbol" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 50 23.5 29.5 31.8 40.5 41.5 21.5 56 50H8Z"/></svg><span>ETHEREAL</span></a><div class="nav-right"><a class="contact-link" href="./contact.html" target="_blank" rel="noopener noreferrer">CONTACT <span>↗</span></a></div></div></header>
+  <button class="mobile-menu-backdrop" type="button" aria-label="メニューを閉じる" tabindex="-1"></button>
   <main id="top">
     <section class="hero"><div class="wrap hero-content"><h1>便利さの先に、<br>人間らしさを。</h1><p>立ち止まり、問い、外へ出る。<br>自然や文化を、誰かと生身で感じる時間をつくる小さな社会プロジェクト。</p><a class="pill" href="#about">ETHEREALについて <span class="arrow">↗</span></a></div><div class="scroll">SCROLL</div></section>
     <section class="intro mountain-scene mountain-scene--intro"><div class="wrap intro-grid"><div><div class="eyebrow">The reason we begin</div><h2>人間の本来的な<br>生き方が壊されている<br>現代</h2></div><div class="intro-copy"><p>自然とのつながり、土地に根づいた文化、人と人との関係。便利さや効率を追い求めるなかで、私たちは人間本来の生き方を少しずつ手放してきたのではないでしょうか。</p><p>社会の変化を見つめながら、自然や文化に自ら触れること、人と語り合うことを通して、これからの暮らしを考えていきます。</p><a class="pill" href="#questions">問いを見てみる <span class="arrow">↗</span></a></div></div></section>
@@ -56,7 +105,45 @@
 
     <section class="join mountain-scene mountain-scene--light" id="contact"><div class="wrap join-inner"><div><div class="eyebrow">Take part</div><h2>あなたも一緒に<br>立ち上がりませんか？</h2><p>活動への参加や農業についての情報交換、企画・協働のご相談はInstagramのDMからご連絡ください。</p></div><div class="join-actions"><a class="pill" href="./contact.html" target="_blank" rel="noopener noreferrer">お問い合わせフォーム <span class="arrow">↗</span></a><a class="pill" href="https://www.instagram.com/etherealjpn/?hl=ja" target="_blank" rel="noopener noreferrer">Instagramを見る <span class="arrow">↗</span></a></div></div></section>
   </main>
-  <footer class="footer mountain-scene mountain-scene--light"><div class="wrap"><div class="footer-top"><div><a class="brand" href="#top">ETHEREAL</a><div class="footer-desc">自然と文化を、もう一度身近に。<br>小さな体験から、これからの暮らしを考える。</div></div><div class="footer-links"><a href="#about">ABOUT</a><a href="#questions">QUESTIONS</a><a href="#projects">ACTIVITIES</a><a href="#founder">FOUNDER</a><a href="./contact.html" target="_blank" rel="noopener noreferrer">CONTACT ↗</a></div></div><div class="footer-bottom"><span>© 2026 ETHEREAL · Aichi, Japan</span><a class="instagram-link" href="https://www.instagram.com/etherealjpn/?hl=ja" target="_blank" rel="noopener noreferrer" aria-label="Instagram 公式アカウント @etherealjpn を開く"><svg class="instagram-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><defs><linearGradient id="ig-gradient" x1="3" y1="21" x2="21" y2="3" gradientUnits="userSpaceOnUse"><stop stop-color="#FEDA75"/><stop offset=".42" stop-color="#FA7E1E"/><stop offset=".72" stop-color="#D62976"/><stop offset="1" stop-color="#4F5BD5"/></linearGradient></defs><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="url(#ig-gradient)" stroke-width="2"/><circle cx="12" cy="12" r="4.2" stroke="url(#ig-gradient)" stroke-width="2"/><circle cx="18" cy="6.4" r="1.2" fill="#D62976"/></svg>Instagram　@etherealjpn ↗</a></div></div></footer>
+  <footer class="footer"><div class="wrap"><div class="footer-top"><div><a class="brand" href="#top">ETHEREAL</a><div class="footer-desc">自然と文化を、もう一度身近に。<br>小さな体験から、これからの暮らしを考える。</div></div><div class="footer-links"><a href="#about">ABOUT</a><a href="#questions">QUESTIONS</a><a href="#projects">ACTIVITIES</a><a href="#founder">FOUNDER</a><a href="./contact.html" target="_blank" rel="noopener noreferrer">CONTACT ↗</a></div></div><div class="footer-bottom"><span>© 2026 ETHEREAL</span><a class="instagram-link" href="https://www.instagram.com/etherealjpn/?hl=ja" target="_blank" rel="noopener noreferrer" aria-label="Instagram 公式アカウント @etherealjpn を開く"><svg class="instagram-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><defs><linearGradient id="ig-gradient" x1="3" y1="21" x2="21" y2="3" gradientUnits="userSpaceOnUse"><stop stop-color="#FEDA75"/><stop offset=".42" stop-color="#FA7E1E"/><stop offset=".72" stop-color="#D62976"/><stop offset="1" stop-color="#4F5BD5"/></linearGradient></defs><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="url(#ig-gradient)" stroke-width="2"/><circle cx="12" cy="12" r="4.2" stroke="url(#ig-gradient)" stroke-width="2"/><circle cx="18" cy="6.4" r="1.2" fill="#D62976"/></svg>Instagram　@etherealjpn ↗</a></div></div></footer>
+  <script>
+    (() => {
+      const header = document.querySelector('.nav');
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const menu = document.getElementById('primary-navigation');
+      const backdrop = document.querySelector('.mobile-menu-backdrop');
+      if (!header || !toggle || !menu) return;
+      const closeMenu = () => {
+        header.classList.remove('nav-menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'メニューを開く');
+        document.body.classList.remove('menu-open');
+      };
+      toggle.addEventListener('click', () => {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        header.classList.toggle('nav-menu-open', !isOpen);
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        toggle.setAttribute('aria-label', isOpen ? 'メニューを開く' : 'メニューを閉じる');
+        document.body.classList.toggle('menu-open', !isOpen);
+      });
+      backdrop?.addEventListener('click', closeMenu);
+      menu.addEventListener('click', (event) => {
+        if (event.target.closest('a')) closeMenu();
+      });
+      document.addEventListener('click', (event) => {
+        if (!header.contains(event.target)) closeMenu();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMenu();
+      });
+      const desktop = window.matchMedia('(min-width: 801px)');
+      const closeOnDesktop = (event) => {
+        if (event.matches) closeMenu();
+      };
+      desktop.addEventListener?.('change', closeOnDesktop);
+      desktop.addListener?.(closeOnDesktop);
+    })();
+  </script>
   <script>
     (() => {
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
